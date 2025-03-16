@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!--We use the tags to indicate that we are configuring Hibernate.-->
+<hibernate-configuration>
+    <!--More exactly, we are configuring the SessionFactory object. SessionFactory is
+    an interface, and we need one SessionFactory to interact with one database.-->
+    <session-factory>
+        <!--Indicate the JDBC properties—the driver.-->
+        <property name="hibernate.connection.driver_class">
+            org.postgresql.Driver
+        </property>
+        <!--The URL of the database.-->
+        <property name="hibernate.connection.url">
+            jdbc:postgresql://localhost:5432/exampleshibernate
+        </property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">password</property>
+        <!--Limit the number of connections waiting in the Hibernate database connection pool to 50.-->
+        <property name="hibernate.connection.pool_size">50</property>
+        <!--While executing, the SQL code is shown.-->
+        <property name="show_sql">true</property>
+        <!--Every time the program is executed, the database will be created from scratch.
+        This is ideal for automated testing, when we want to work with a clean database for
+        every test run.-->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+    </session-factory>
+</hibernate-configuration>

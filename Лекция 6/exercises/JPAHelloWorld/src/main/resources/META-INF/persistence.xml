@@ -1,0 +1,37 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <!--The persistence.xml file configures at least one persistence unit; each unit must have a unique name.-->
+    <persistence-unit name="helloworldjpa">
+        <!--As JPA is only a specification, we need to indicate the vendor-specific Persistence-
+        Provider implementation of the API. The persistence we define will be backed by a
+        Hibernate provider.-->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.sibsutis.study.helloworld.Message</class>
+        <properties>
+            <!--Indicate the JDBC properties—the driver.-->
+            <property name="jakarta.persistence.jdbc.driver"
+                      value="org.postgresql.Driver"/>
+            <!--The URL of the database.-->
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost:5432/exampleshibernate"/>
+            <!--The username.-->
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <!--The password.-->
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
+            <!--The Hibernate dialect-->
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <!--While executing, show the SQL code.-->
+            <property name="hibernate.show_sql" value="true"/>
+            <!--Hibernate will format the SQL nicely and generate comments in the SQL string so
+            we know why Hibernate executed the SQL statement.-->
+            <property name="hibernate.format_sql" value="true"/>
+            <!--Every time the program is executed, the database will be created from scratch.
+            This is ideal for automated testing, when we want to work with a clean database for
+            every test run.-->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+        </properties>
+    </persistence-unit>
+</persistence>
